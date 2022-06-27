@@ -8,14 +8,14 @@ function Arc({ r, deg, width, color, transform, mx = 0, my = 0 }: ARCTYPE) {
   return (
     <g>
       <path
-        className="arc"
+        style={{ transformOrigin: `${mx - r}px ${my}px` }}
         onMouseOver={() => {
           setScaleSize(1.2);
         }}
         onMouseOut={() => {
           setScaleSize(1);
         }}
-        d={`M ${300} ${300} a ${r} ${r} 0 ${deg > 180 ? 1 : 0} 1 ${x} ${y}`}
+        d={`M ${mx} ${my} a ${r} ${r} 0 ${deg > 180 ? 1 : 0} 1 ${x} ${y}`}
         fill="none"
         stroke={color}
         strokeWidth={width * scaleSize}
