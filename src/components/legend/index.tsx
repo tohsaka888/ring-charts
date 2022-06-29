@@ -7,7 +7,7 @@ function Legend({ setActiveIndex, dataSource, total, ...props }: React.SVGAttrib
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '100%', userSelect: 'none' }}>
         {dataSource.map((item, index) => {
           return (
-            <div style={{ display: 'flex', alignItems: 'center', }} key={index}>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', fontSize: '10px' }} key={index}>
               <div
                 style={{ background: item.color, width: '18px', height: '18px', marginRight: '5px', cursor: 'pointer' }}
                 onMouseOver={() => {
