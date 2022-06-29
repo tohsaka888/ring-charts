@@ -1,10 +1,11 @@
 import React from "react";
+import { SpringValue } from 'react-spring'
 
 export type ARCTYPE = {
   r: number;
   deg: number;
   width: number;
-  transform?: string;
+  transform?: SpringValue<string>;
   mx?: number;
   my?: number;
   isActive: boolean;
@@ -44,7 +45,7 @@ export type CurrentArcContextProps = {
 export type PopoverProps = {
   total: number;
   position: {
-    x: number;
-    y: number;
+    top: SpringValue<number>;
+    left: SpringValue<number>;
   }
 }
