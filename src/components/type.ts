@@ -8,6 +8,7 @@ export type ARCTYPE = {
   mx?: number;
   my?: number;
   isActive: boolean;
+  key?: React.Key;
 } & DATASOURCE
 
 export type LEGENDTYPE = {
