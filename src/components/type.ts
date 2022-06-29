@@ -4,12 +4,11 @@ export type ARCTYPE = {
   r: number;
   deg: number;
   width: number;
-  color: string;
   transform?: string;
   mx?: number;
   my?: number;
   isActive: boolean;
-}
+} & DATASOURCE
 
 export type DATASOURCE = {
   name: string;
@@ -31,4 +30,22 @@ export type CANVASTYPE = {
   radius: number; // 圆半径
   dataSource: DATASOURCE[]; //数据源
   title?: string;
+}
+
+export type PopoverShowContextProps = {
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export type CurrentArcContextProps = {
+  arc: DATASOURCE;
+  setArc: React.Dispatch<React.SetStateAction<DATASOURCE>>;
+}
+
+export type PopoverProps = {
+  total: number;
+  position: {
+    x: number;
+    y: number;
+  }
 }
