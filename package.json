@@ -1,6 +1,17 @@
 {
   "name": "ring-charts",
   "version": "0.0.1",
+  "main": "lib/commonjs/index.js",
+  "types": "lib/typescript/index.d.ts",
+  "module": "lib/module/index.js",
+  "source": "src/components/index.tsx",
+  "files": [
+    "src/components",
+    "lib"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
