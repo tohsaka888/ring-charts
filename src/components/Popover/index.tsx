@@ -5,7 +5,6 @@ import { PopoverProps } from '../type'
 function Popover({ total, position }: PopoverProps) {
   const { visible } = useContext(PopoverShowContext)!
   const { arc } = useContext(CurrentArcContext)!
-  console.log(total, arc.value)
   return (
     <div
       style={{
