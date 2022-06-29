@@ -36,7 +36,7 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
       to: {
         transform: `rotate(${item.preTotal as number / total * 360})`
       },
-      config: config.slow
+      immediate: true
     }))
   )
 
@@ -52,8 +52,8 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
         <svg width={width} height={height} style={{ position: 'relative' }}
           onMouseMove={(event) => {
             window.requestAnimationFrame(() => {
-              setPosition({
-                left: event.clientX + 20,
+              setPosition.start({
+                left: event.clientX + 50,
                 top: event.clientY + 20
               })
             })
