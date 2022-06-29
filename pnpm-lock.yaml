@@ -1592,6 +1592,27 @@ packages:
       scheduler: 0.23.0
     dev: true
 
+  /react-spring/9.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-FRIXQGR+jG+Fx4UcqhF0b5jMEU3Q5QcZ8rEVWKqZgrrn92C1HcqtuZy7dH+rZ6uNGjnlV7HBf8iprJaJ+350LA==}
+    dependencies:
+      '@react-spring/core': 9.4.5_react@18.2.0
+      '@react-spring/konva': 9.4.5_react@18.2.0
+      '@react-spring/native': 9.4.5_react@18.2.0
+      '@react-spring/three': 9.4.5_react@18.2.0
+      '@react-spring/web': 9.4.5_biqbaboplfbrettd7655fr4n2y
+      '@react-spring/zdog': 9.4.5_biqbaboplfbrettd7655fr4n2y
+    transitivePeerDependencies:
+      - '@react-three/fiber'
+      - konva
+      - react
+      - react-dom
+      - react-konva
+      - react-native
+      - react-zdog
+      - three
+      - zdog
+    dev: false
+
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}

@@ -4,6 +4,7 @@ import { CurrentArcContext, PopoverShowContext } from '../context';
 import Legend from '../legend';
 import Popover from '../Popover';
 import { CANVASTYPE, DATASOURCE } from '../type'
+import { useSprings, config, useSpring } from 'react-spring'
 
 function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
   const mx = radius * 2 + 50;
@@ -11,7 +12,6 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
 
   const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [visible, setVisible] = useState<boolean>(false);
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const [arc, setArc] = useState<DATASOURCE>({
     name: '',
     value: 0,
@@ -27,21 +27,40 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
     return sum
   }, [dataSource])
 
+  const springs = useSprings(
+    dataSource.length,
+    dataSource.map(item => ({
+      from: {
+        transform: `rotate(0)`
+      },
+      to: {
+        transform: `rotate(${item.preTotal as number / total * 360})`
+      },
+      config: config.slow
+    }))
+  )
+
+  const [position, setPosition] = useSpring(() => ({
+    top: 0,
+    left: 0,
+    config: config.stiff
+  }))
 
   return (
     <PopoverShowContext.Provider value={{ visible, setVisible }}>
       <CurrentArcContext.Provider value={{ arc, setArc }}>
         <svg width={width} height={height} style={{ position: 'relative' }} onMouseMove={(event) => {
           setPosition({
-            x: event.clientX,
-            y: event.clientY
+            left: event.clientX + 20,
+            top: event.clientY + 20
           })
         }}>
           {/* <!-- 画圆弧 (rx ry x-axis-rotation large-arc-flag sweep-flag x y) --> */}
-          {dataSource.map((item, index) => {
+          {springs.map((item, index) => {
             const isActive = index === activeIndex
+            const arc = dataSource[index]
             return (
-              <Arc isActive={isActive} key={index} r={radius} deg={item.value / total * 360} width={10 * (index + 1)} {...item} transform={`rotate(${item.preTotal as number / total * 360})`} mx={mx} my={my} />
+              <Arc isActive={isActive} key={index} r={radius} deg={arc.value / total * 360} width={10 * (index + 1)} {...arc} transform={item.transform} mx={mx} my={my} />
             )
           })}
           <text x={mx - radius} y={my} textAnchor="middle" dominantBaseline={'middle'} fontSize={"1.3rem"} fontWeight={"bold"}>{title}</text>

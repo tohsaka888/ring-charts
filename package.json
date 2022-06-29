@@ -12,6 +12,9 @@
   "directories": {
     "lib": "lib"
   },
+  "dependencies": {
+    "react-spring": "^9.4.5"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
