@@ -11,6 +11,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-scripts: 5.0.1
+  ring-charts: ^0.0.1
   typescript: ^4.4.2
 
 dependencies:
@@ -24,6 +25,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_qtbnez4q7bzoc4eqybg3efzzxe
+  ring-charts: 0.0.1_biqbaboplfbrettd7655fr4n2y
   typescript: 4.7.4
 
 packages:
@@ -8350,6 +8352,16 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: false
+
+  /ring-charts/0.0.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-vGjabekMXULa3Modu7j3uoQBspxVZgdy6cjiy9fsVMa+cZlfbfWJPlurd/ldWum4/0NTSHrxsti5tcnl9nrKWQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /rollup-plugin-terser/7.0.2_rollup@2.75.7:

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RingCharts } from './components';
+import { RingCharts } from 'ring-charts';
 import fakeData from './fake_data.json'
 
 function App() {
