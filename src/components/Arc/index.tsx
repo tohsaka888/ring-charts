@@ -18,7 +18,8 @@ function Arc({ r, deg, width, color, transform, mx = 0, my = 0, isActive, name, 
   return (
     <a.path
       style={{ transformOrigin: `${mx - r}px ${my}px` }}
-      onMouseOver={() => {
+      onMouseOver={(event) => {
+        event.stopPropagation()
         setScaleSize(3);
         setVisible(true);
         setArc({ color, name, value })

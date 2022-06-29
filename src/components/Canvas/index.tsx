@@ -49,12 +49,15 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
   return (
     <PopoverShowContext.Provider value={{ visible, setVisible }}>
       <CurrentArcContext.Provider value={{ arc, setArc }}>
-        <svg width={width} height={height} style={{ position: 'relative' }} onMouseMove={(event) => {
-          setPosition({
-            left: event.clientX + 20,
-            top: event.clientY + 20
-          })
-        }}>
+        <svg width={width} height={height} style={{ position: 'relative' }}
+          onMouseMove={(event) => {
+            window.requestAnimationFrame(() => {
+              setPosition({
+                left: event.clientX + 20,
+                top: event.clientY + 20
+              })
+            })
+          }}>
           {/* <!-- 画圆弧 (rx ry x-axis-rotation large-arc-flag sweep-flag x y) --> */}
           {springs.map((item, index) => {
             const isActive = index === activeIndex
