@@ -10,9 +10,9 @@ function Popover({ total, position }: PopoverProps) {
     <div
       style={{
         width: 'max-content',
-        height: '40px',
+        height: '38px',
         display: visible ? 'flex' : 'none',
-        boxShadow: `0px 0px 5px 2px ${arc.color}`,
+        border: `1.5px solid ${arc.color}`,
         justifyContent: 'center',
         alignItems: 'center',
         padding: '0px 8px',
@@ -20,7 +20,8 @@ function Popover({ total, position }: PopoverProps) {
         position: 'absolute',
         top: position.y + 20,
         left: position.x + 20,
-        background: '#fff'
+        background: '#f9f9f9',
+        // boxShadow: '3px 3px 5px 2px #e2e2e2'
       }}
     >
       <div style={{ width: '10px', height: '10px', background: arc.color, borderRadius: '50%', marginRight: '8px' }} />
