@@ -49,3 +49,13 @@ export type PopoverProps = {
     left: SpringValue<number>;
   }
 }
+
+export type DeletedContextProps = {
+  deletedDataSource: DATASOURCE[],
+  setDeletedDataSource: React.Dispatch<React.SetStateAction<DATASOURCE[]>>;
+}
+
+export type DataSourceContextProps = {
+  data: DATASOURCE[];
+  setData: React.Dispatch<React.SetStateAction<DATASOURCE[]>>;
+}
