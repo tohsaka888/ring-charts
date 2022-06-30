@@ -24,8 +24,9 @@ function LegendItem(
             setData(dataSources => dataSources.filter(dataSource => dataSource.name !== item.name))
           } else {
             setData(data => {
-              data.splice(index, 0, item)
-              return data
+              let temp = [...data]
+              temp.splice(index, 0, item)
+              return temp
             })
           }
         }}
@@ -41,7 +42,6 @@ function Legend({ setActiveIndex, dataSource, total, ...props }: React.SVGAttrib
     <foreignObject {...props}>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%', height: '100%', userSelect: 'none' }}>
         {dataSource.map((item, index) => {
-          console.log(item, total)
           return (
             <Fragment key={index}>
               <LegendItem item={item} index={index} {...props} setActiveIndex={setActiveIndex} total={total} />
