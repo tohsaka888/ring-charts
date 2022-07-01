@@ -21,4 +21,4 @@ export type CANVASTYPE = {
 
 ## Example
 
-https://v.superbed.cn/play/62beafaa1d64b07066e47495
+https://user-images.githubusercontent.com/58759688/176856827-bb6601a3-612b-47b1-befe-ee360de659a3.mp4
