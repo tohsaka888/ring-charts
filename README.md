@@ -18,3 +18,7 @@ export type CANVASTYPE = {
   title?: string;
 };
 ```
+
+## Example
+
+https://user-images.githubusercontent.com/58759688/176855004-9c4ef5ea-32e3-4263-a8d7-5cf955bc8e36.mp4
