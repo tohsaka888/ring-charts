@@ -11,7 +11,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-scripts: 5.0.1
-  ring-charts: ^0.0.2
+  ring-charts: ^0.0.3
   typescript: ^4.4.2
 
 dependencies:
@@ -25,7 +25,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_qtbnez4q7bzoc4eqybg3efzzxe
-  ring-charts: 0.0.2_biqbaboplfbrettd7655fr4n2y
+  ring-charts: 0.0.3_biqbaboplfbrettd7655fr4n2y
   typescript: 4.7.4
 
 packages:
@@ -8486,8 +8486,8 @@ packages:
       glob: 7.2.3
     dev: false
 
-  /ring-charts/0.0.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-tyFKuK1tVriKpHazx4mBe3r1puWuEiDPzSQz088CYsa4er6nbPHNzXlYS7gwxlhyzlBS9fEWBmt8jBUoPB2ZEA==}
+  /ring-charts/0.0.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-APUuRfrxNJdO6uscxJEExuTPsbgZjvZrOMlVHij0i0Q9tHf44xadYiPqvwJoRZz4KxSyc+ixTux+bnRic9puDw==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
