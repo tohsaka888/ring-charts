@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { EmptyCircleProps } from '../type'
 import { a, useSpring } from 'react-spring'
-import { PopoverShowContext } from '../context'
+import { CurrentArcContext, PopoverShowContext } from '../context'
 
 
-function EmptyCircle({ color, radius, my, activeIndex, item }: EmptyCircleProps) {
+function EmptyCircle({ color, radius, my, activeIndex, item, setActiveIndex }: EmptyCircleProps) {
 
   const [isActive, setIsActive] = useState<boolean>(false)
 
   const strokeWidthStyle = useSpring({
     strokeWidth: activeIndex === item?.id ? 20 : isActive ? 20 : 15,
   })
+  const { setArc } = useContext(CurrentArcContext)!
 
   const { setVisible } = useContext(PopoverShowContext)!
 
@@ -25,6 +26,8 @@ function EmptyCircle({ color, radius, my, activeIndex, item }: EmptyCircleProps)
         if (item !== undefined) {
           setIsActive(true)
           setVisible(true)
+          setActiveIndex(item.id)
+          setArc(item)
         }
       }}
       onMouseOut={() => {

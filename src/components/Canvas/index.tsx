@@ -65,7 +65,7 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
               })
             }}>
             {(data.length === 0 || total === 0) &&
-              <EmptyCircle color={'#cecece'} radius={radius} my={my} activeIndex={activeIndex} />}
+              <EmptyCircle color={'#cecece'} radius={radius} my={my} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />}
             {/* <!-- 画圆弧 (rx ry x-axis-rotation large-arc-flag sweep-flag x y) --> */}
             {springs.map((item, index) => {
               const arc = data[index]
@@ -73,7 +73,7 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
               return (
                 <React.Fragment key={index}>
                   {data.length === 1 ?
-                    <EmptyCircle key={index} color={arc.color} radius={radius} my={my} item={arc} activeIndex={activeIndex} />
+                    <EmptyCircle key={index} color={arc.color} radius={radius} my={my} item={arc} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
                     :
                     <Arc
                       isActive={isActive}

@@ -68,4 +68,5 @@ export type EmptyCircleProps = {
   my: number;
   activeIndex: string;
   item?: DATASOURCE;
+  setActiveIndex: React.Dispatch<React.SetStateAction<string>>;
 }
