@@ -3,7 +3,7 @@ import { CurrentArcContext, PopoverShowContext } from "../context";
 import { ARCTYPE } from "../type";
 import { a, useSpring, config } from 'react-spring'
 
-function Arc({ r, deg, width, color, transform, mx = 0, my = 0, isActive, name, value }: ARCTYPE) {
+function Arc({ r, deg, width, color, transform, mx = 0, my = 0, isActive, name, value, id }: ARCTYPE) {
   const x = r * Math.cos((deg * Math.PI) / 180) - r;
   const y = r * Math.sin((deg * Math.PI) / 180);
   const [scaleSize, setScaleSize] = useState<number>(0);
@@ -22,7 +22,7 @@ function Arc({ r, deg, width, color, transform, mx = 0, my = 0, isActive, name, 
         event.stopPropagation()
         setScaleSize(3);
         setVisible(true);
-        setArc({ color, name, value })
+        setArc({ color, name, value, id })
       }}
       onMouseOut={() => {
         setScaleSize(0);

@@ -1,24 +1,25 @@
 import React, { useMemo, useState } from 'react'
 import Arc from '../Arc'
-import { CurrentArcContext, PopoverShowContext, DeletedContext, DataContext } from '../context';
+import { CurrentArcContext, PopoverShowContext, DataContext } from '../context';
 import Legend from '../legend';
 import Popover from '../Popover';
 import { CANVASTYPE, DATASOURCE } from '../type'
 import { useSprings, config, useSpring } from 'react-spring'
+import EmptyCircle from '../EmptyCircle'
 
 function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
   const mx = radius * 2 + 50;
   const my = height / 2;
 
-  const [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [activeIndex, setActiveIndex] = useState<string>('');
   const [visible, setVisible] = useState<boolean>(false);
-  // const [deletedDataSource, setDeletedDataSource] = useState<DATASOURCE[]>([]);
   const [data, setData] = useState<DATASOURCE[]>(dataSource);
 
   const [arc, setArc] = useState<DATASOURCE>({
     name: '',
     value: 0,
-    color: ''
+    color: '',
+    id: ''
   })
 
   const total = useMemo(() => {
@@ -30,8 +31,6 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
     })
     return sum
   }, [data])
-
-  console.log(data)
 
   const springs = useSprings(
     data.length,
@@ -55,7 +54,6 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
   return (
     <PopoverShowContext.Provider value={{ visible, setVisible }}>
       <CurrentArcContext.Provider value={{ arc, setArc }}>
-        {/* <DeletedContext.Provider value={{ deletedDataSource, setDeletedDataSource }}> */}
         <DataContext.Provider value={{ data, setData }}>
           <svg width={width} height={height} style={{ position: 'relative' }}
             onMouseMove={(event) => {
@@ -66,12 +64,29 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
                 })
               })
             }}>
+            {(data.length === 0 || total === 0) &&
+              <EmptyCircle color={'#cecece'} radius={radius} my={my} activeIndex={activeIndex} />}
             {/* <!-- 画圆弧 (rx ry x-axis-rotation large-arc-flag sweep-flag x y) --> */}
             {springs.map((item, index) => {
-              const isActive = index === activeIndex
               const arc = data[index]
+              const isActive = arc.id === activeIndex
               return (
-                <Arc isActive={isActive} key={index} r={radius} deg={arc.value / total * 360} width={10 * (index + 1)} {...arc} transform={item.transform} mx={mx} my={my} />
+                <React.Fragment key={index}>
+                  {data.length === 1 ?
+                    <EmptyCircle key={index} color={arc.color} radius={radius} my={my} item={arc} activeIndex={activeIndex} />
+                    :
+                    <Arc
+                      isActive={isActive}
+                      key={index}
+                      r={radius}
+                      deg={arc.value / total * 360}
+                      width={10 * (index + 1)}
+                      {...arc}
+                      transform={item.transform}
+                      mx={mx}
+                      my={my}
+                    />}
+                </React.Fragment>
               )
             })}
             <text x={mx - radius} y={my} textAnchor="middle" dominantBaseline={'middle'} fontSize={"1.3rem"} fontWeight={"bold"}>{title}</text>
@@ -79,7 +94,6 @@ function Canvas({ width, height, dataSource, radius, title }: CANVASTYPE) {
           </svg>
           <Popover total={total} position={position} />
         </DataContext.Provider>
-        {/* </DeletedContext.Provider> */}
       </CurrentArcContext.Provider>
     </PopoverShowContext.Provider>
   )

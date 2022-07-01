@@ -5,7 +5,7 @@ import { DATASOURCE, LEGENDTYPE } from '../type'
 function LegendItem(
   { setActiveIndex, item, total, index, ...props }
     : React.SVGAttributes<SVGForeignObjectElement>
-    & { total: number; setActiveIndex: React.Dispatch<React.SetStateAction<number>>; item: DATASOURCE; index: number }) {
+    & { total: number; setActiveIndex: React.Dispatch<React.SetStateAction<string>>; item: DATASOURCE; index: number }) {
   const [deleteFlag, setDeleteFlag] = useState<boolean>(false)
   const { setData } = useContext(DataContext)!
   return (
@@ -13,10 +13,10 @@ function LegendItem(
       <div
         style={{ background: deleteFlag ? '#cecece' : item.color, width: '18px', height: '18px', marginRight: '5px', cursor: 'pointer' }}
         onMouseOver={() => {
-          setActiveIndex(index)
+          setActiveIndex(item.id)
         }}
         onMouseLeave={() => {
-          setActiveIndex(-1)
+          setActiveIndex('')
         }}
         onClick={() => {
           setDeleteFlag(!deleteFlag)
@@ -31,7 +31,7 @@ function LegendItem(
           }
         }}
       />
-      <div>{item.name}&nbsp;{deleteFlag ? 0 : (item.value / total * 100).toFixed(0)}%</div>
+      <div>{item.name}&nbsp;{deleteFlag ? 0 : item.value === 0 ? 0 : (item.value / total * 100).toFixed(0)}%</div>
     </div>
   )
 }
