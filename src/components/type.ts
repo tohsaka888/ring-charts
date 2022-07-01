@@ -15,7 +15,7 @@ export type ARCTYPE = {
 export type LEGENDTYPE = {
   dataSource: DATASOURCE[]; //数据源
   total: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  setActiveIndex: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type DATASOURCE = {
@@ -23,6 +23,7 @@ export type DATASOURCE = {
   value: number;
   color: string;
   preTotal?: number;
+  id: string;
 }
 
 export type CANVASTYPE = {
@@ -49,4 +50,22 @@ export type PopoverProps = {
     top: SpringValue<number>;
     left: SpringValue<number>;
   }
+}
+
+export type DeletedContextProps = {
+  deletedDataSource: DATASOURCE[],
+  setDeletedDataSource: React.Dispatch<React.SetStateAction<DATASOURCE[]>>;
+}
+
+export type DataSourceContextProps = {
+  data: DATASOURCE[];
+  setData: React.Dispatch<React.SetStateAction<DATASOURCE[]>>;
+}
+
+export type EmptyCircleProps = {
+  color: string;
+  radius: number;
+  my: number;
+  activeIndex: string;
+  item?: DATASOURCE;
 }
