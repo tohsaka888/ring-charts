@@ -18,3 +18,9 @@ export type CANVASTYPE = {
   title?: string;
 };
 ```
+
+## Example
+
+<video id="video" controls="" preload="none">
+      <source id="mp4" src="./example/vedio.mp4" type="video/mp4">
+</videos>
