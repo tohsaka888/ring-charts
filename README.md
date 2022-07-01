@@ -21,6 +21,4 @@ export type CANVASTYPE = {
 
 ## Example
 
-<video id="video" controls="" preload="none">
-      <source id="mp4" src="./example/vedio.mp4" type="video/mp4">
-</videos>
+<video id="video" controls preload="none" src="./example/vedio.mp4" width="500" height="300" />
